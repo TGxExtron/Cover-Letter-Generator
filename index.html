@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta property="og:image" content="content="https://developers.netlify.com/preview-image/guides/..." />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cover Craft</title>
@@ -83,14 +84,15 @@
         <label for="position">Position Applied For:</label>
         <input type="text" id="position" required>
 
+        <label for="passion">Passion (related to the position): Programming, cycling, etc:</label>
+        <textarea id="passion" required></textarea>
+
         <label for="company">Company Name:</label>
         <input type="text" id="company" required>
 
         <label for="skills">Key Skills [use comma to separate]:</label>
         <input type="text" id="skills" required>
 
-        <label for="experience">Relevant Experience:</label>
-        <textarea id="experience" rows="4" required></textarea>
 
         <button type="submit">Generate Cover Letter</button>
     </form>
@@ -112,10 +114,9 @@
         const address = document.getElementById('address').value;
         const phone = document.getElementById('phone').value;
         const position = document.getElementById('position').value;
+        const passion = document.getElementById('passion').value;
         const company = document.getElementById('company').value;
-        const skills = document.getElementById('skills').value.split(',').map(skill => skill.trim()).join(', ');
-        const experience = document.getElementById('experience').value;
-
+        const skills = document.getElementById('skills').value;
         const coverLetter = `${name}
 ${address}
 ${city},${state},${country},${zipcode}
@@ -128,11 +129,11 @@ ${company}
 
 Dear Hiring Manager,
 
-I am writing to express my enthusiasm for the ${position} role at ${company}. My strong passion for ${position} and dedication to continuous learning and growth make me an ideal candidate for this position
+I am writing to express my enthusiasm for the ${position} role at ${company}. My strong passion for ${passion} and dedication to continuous learning and growth make me an ideal candidate for this position
 
 Throughout my academic journey, I have developed a solid foundation in ${skills}, and I am eager to apply this knowledge in a practical setting, and I am confident that my dedication and enthusiasm will make a meaningful contribution to your team.
 
-I am a quick learner and a highly motivated individual, always seeking to expand my knowledge and skills. I am confident that my proactive approach and enthusiasm for ${position} will allow me to thrive in this role and contribute positively to ${company}.
+I am a quick learner and a highly motivated individual, always seeking to expand my knowledge and skills. I am confident that my proactive approach and enthusiasm for ${passion} will allow me to thrive in this role and contribute positively to ${company}.
 
 Thank you for considering my application. I look forward to the opportunity to discuss how my skills and passion align with the goals of ${company}. I am excited about the prospect of contributing to your team's success and growth.
 
@@ -144,7 +145,7 @@ ${name}\n`;
     document.getElementById('copyButton').addEventListener('click', function() {
         const coverLetterText = document.getElementById('coverLetterOutput').textContent;
         navigator.clipboard.writeText(coverLetterText).then(() => {
-            alert('Cover letter copied to clipboard!');
+            alert('Cover letter copied to clipboard! Please read your cover letter carefully');
         }).catch(err => {
             console.error('Failed to copy text: ', err);
         });
