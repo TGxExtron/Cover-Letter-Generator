@@ -71,12 +71,19 @@
                 display: block;
             }
         }
-        @media screen and (max-width: 600px) {
-            .navbar.responsive {
-                position: relative;
-                flex-direction: column;
-                align-items: flex-start;
+        @media screen and (max-width: 600px) { 
+            .navbar { 
+            flex-direction: column;
+            align-items: center;
             }
+            .navbar a:not(:first-child) { 
+            display: none;
+            }
+            .navbar a.icon { 
+            display: block;
+            padding: 14px 20px;
+        }
+    }
             .navbar.responsive .icon {
                 position: absolute;
                 right: 0;
@@ -87,7 +94,6 @@
                 display: block;
                 text-align: left;
             }
-        }
         #coldemailOutput {
             white-space: pre-wrap;
             word-wrap: break-word;
@@ -138,7 +144,7 @@
             <input type="text" id="responsibility" required>
             <button type="submit">Generate Cold Email</button>
         </form>
-       <h3>Cold Email:</h3>
+        <h3>Cold Email:</h3>
         <pre id="coldemailOutput"></pre>
     </div>
     <button id="copyButton">Copy Text</button>
@@ -171,5 +177,7 @@
     <footer>
         <p class="centered-paragraph">© TCxExtron 2024. All rights reserved.</p>
     </footer>
+</body>
+</html>
 </body>
 </html>
