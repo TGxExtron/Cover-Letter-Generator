@@ -20,6 +20,17 @@
             background-color: #000000;
             color: #ffffff;
         }
+        .container { 
+            display: flex; 
+            justify-content: center;  
+            align-items: top; 
+            height: 1vh; 
+        }
+        a {
+            margin: 0 10px;
+            text-decoration: none; 
+            color: rgb(255, 255, 255);
+        }
         h1 {
             text-align: center;
         }
@@ -88,14 +99,13 @@
         <h1>Cover Craft</h1>
         <center><h4> Cover Letter Generator</h4></center>
     </header>
+    <nav>
     <div class="navbar">
         <a href="index.html">Cover Letter Generator</a>
-        <a href="index1.html">Email Generator</a>
+        <a href="index1.html">Cold Email Generator</a>
     </div>
-    <div>
-        <p class="centered-paragraph"></p>
-    </div>
-    <div>
+</nav>
+
         <form id="coverLetterForm">
             <label for="date">Date:</label>
             <input type="text" id="date" required>
@@ -188,6 +198,9 @@ ${name}\n`;
     </script>
     <footer>
         <p class="centered-paragraph">© TCxExtron 2024. All rights reserved.</p>
+        <div class="container"> 
+            <a href="index2.html">Privacy Policy</a> 
+            <a href="index3.html">Terms & Conditions</a></div>
     </footer>
 </body>
 </html>
