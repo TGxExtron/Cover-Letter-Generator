@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta property="og:image" content="https://github.com/TGxExtron/Cover-Letter-Generator/blob/main/icon/favicon.png?raw=true" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cover Craft - Cold Email</title>
@@ -79,7 +80,7 @@
         .navbar .icon {
             display: none;
         }
-        #coldemailOutput {
+        #coldemailOutput{
             white-space: pre-wrap;
             word-wrap: break-word;
             overflow: auto;
@@ -132,6 +133,18 @@
     </div>
     <button id="copyButton">Copy Text</button>
     <script>
+        function typeText(element, text, delay) {
+            let index = 0;
+            function type() {
+                if (index < text.length) {
+                    element.textContent += text[index];
+                    index++;
+                    setTimeout(type, delay);
+                }
+            }
+            type();
+        }
+
         document.getElementById('coldemailgeneratorform').addEventListener('submit', function(event) {
             event.preventDefault();
             const name = document.getElementById('name').value;
@@ -145,7 +158,10 @@
             const employer = document.getElementById('employer').value;
             const responsibility = document.getElementById('responsibility').value;
             const coldemail = `Subject: Application for ${job} Position\n\nDear ${hr},\n\nI hope this message finds you well. My name is ${name}, and I am reaching out to express my interest in the ${job} position at ${company}. With a strong background in ${skills}, I believe I am a perfect candidate for this role and could contribute effectively to your team.\n\nI have developed a solid foundation in ${skills}. My experience at ${employer}, where I ${responsibility}, has equipped me with the skills necessary for ${job}.\n\nI am particularly drawn to ${company} because of its reputation for innovation and excellence. The opportunity to work with your team excites me, and I am eager to contribute to ${company}’s continued success.\n\nI have attached my resume and portfolio for your review. I would be grateful for the opportunity to discuss how my background, skills, and enthusiasm align with the needs of your team. Thank you very much for considering my application.\n\nBest regards,\n${name}\n${phone}\n${linkedin}\n${email}\n`;
-            document.getElementById('coldemailOutput').textContent = coldemail;
+
+            const coldemailOutput = document.getElementById('coldemailOutput');
+            coldemailOutput.textContent = '';
+            typeText(coldemailOutput, coldemail, 30);
         });
 
         document.getElementById('copyButton').addEventListener('click', function() {
