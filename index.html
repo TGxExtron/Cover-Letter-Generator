@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta property="og:image" content="https://developers.netlify.com/preview-image/guides/..." />
+    <meta property="og:image" content="https://github.com/TGxExtron/Cover-Letter-Generator/blob/main/icon/favicon.png?raw=true" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cover Craft - Cover Letter</title>
@@ -97,7 +97,7 @@
             <img src="/icon/logoweb.ico"alt="logo">
         </a>
         <h1>Cover Craft</h1>
-       <h4 class="centered-paragraph"> Cover Letter Generator</h4>
+        <h4 class="centered-paragraph"> Cover Letter Generator</h4>
     </header>
     <nav>
     <div class="navbar">
@@ -140,13 +140,17 @@
     </div>
     <button id="copyButton">Copy Text</button>
     <script>
-        function openNav() {
-            document.getElementById("mySidenav").style.width = "250px";
+        function typeText(element, text, delay) {
+            let index = 0;
+            function type() {
+                if (index < text.length) {
+                    element.textContent += text[index];
+                    index++;
+                    setTimeout(type, delay);
+                }
+            }
+            type();
         }
-        function closeNav() {
-            document.getElementById("mySidenav").style.width = "0";
-        }
-
         document.getElementById('coverLetterForm').addEventListener('submit', function(event) {
             event.preventDefault();
             const date = document.getElementById('date').value;
@@ -184,18 +188,19 @@ Thank you for considering my application. I look forward to the opportunity to d
 
 Warm regards,
 ${name}\n`;
-            document.getElementById('coverLetterOutput').textContent = coverLetter;
-        });
-
-        document.getElementById('copyButton').addEventListener('click', function() {
-            const coverLetterText = document.getElementById('coverLetterOutput').textContent;
-            navigator.clipboard.writeText(coverLetterText).then(() => {
-                alert('Cover letter copied to clipboard! Please read your cover letter carefully.');
-            }).catch(err => {
-                console.error('Failed to copy text: ', err);
-            });
-        });
-    </script>
+const coverLetterOutput = document.getElementById('coverLetterOutput');
+coverLetterOutput.textContent = '';
+typeText(coverLetterOutput, coverLetter, 30);
+});
+document.getElementById('copyButton').addEventListener('click', function() {
+const coverLetterText = document.getElementById('coverLetterOutput').textContent;
+navigator.clipboard.writeText(coverLetterText).then(() => {
+    alert('Cover letter copied to clipboard! Please read your cover letter carefully.');
+}).catch(err => {
+    console.error('Failed to copy text: ', err);
+});
+});
+</script>
     <footer>
         <p class="centered-paragraph">© TCxExtron 2024. All rights reserved.</p>
         <div class="container"> 
