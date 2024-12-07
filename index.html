@@ -3,9 +3,36 @@
 <head>
     <meta property="og:image" content="https://github.com/TGxExtron/Cover-Letter-Generator/blob/main/icon/favicon.png?raw=true" />
     <meta charset="UTF-8">
+    <meta name="description" content="Generate professional cover letters easily with Cover Craft. Enter your details, and get a personalized cover letter.">
+    <meta name="keywords" content="cover letter, cover letter generator, professional cover letter, job application, resume, Cover Craft">
+    <meta name="author" content="TCxExtron">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="Cover Craft - Cover Letter Generator">
+    <meta property="og:description" content="Generate professional cover letters easily with Cover Craft. Enter your details, and get a personalized cover letter.">
+    <meta property="og:url" content="https://your-website-url.com">
+    <meta property="og:type" content="website">
     <title>Cover Craft - Cover Letter</title>
     <link rel="icon" type="image/png" href="/icon/favicon.png">
+    <link rel="canonical" href="https://your-website-url.com">
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "name": "Cover Craft",
+          "url": "https://coverlettercraft.netlify.app",
+          "description": "Generate professional cover letters easily with Cover Craft. Enter your details, and get a personalized cover letter.",
+          "publisher": {
+            "@type": "Organization",
+            "name": "TCxExtron"
+          },
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://coverlettercraft.netlify.app/search?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        }
+        </script>
+        
     <style>
         .centered-paragraph {
             text-align: center;
@@ -151,6 +178,8 @@
             }
             type();
         }
+
+
         document.getElementById('coverLetterForm').addEventListener('submit', function(event) {
             event.preventDefault();
             const date = document.getElementById('date').value;
@@ -192,6 +221,7 @@ const coverLetterOutput = document.getElementById('coverLetterOutput');
 coverLetterOutput.textContent = '';
 typeText(coverLetterOutput, coverLetter, 30);
 });
+
 document.getElementById('copyButton').addEventListener('click', function() {
 const coverLetterText = document.getElementById('coverLetterOutput').textContent;
 navigator.clipboard.writeText(coverLetterText).then(() => {
