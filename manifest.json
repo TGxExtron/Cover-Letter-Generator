@@ -3,7 +3,7 @@
   "short_name": "cover_craft",
   "theme_color": "#000000",
   "background_color": "#000000",
-  "display": "browser",
+  "display": "standalone",
   "orientation": "",
   "scope": "/",
   "start_url": "https://coverlettercraft.netlify.app/",
