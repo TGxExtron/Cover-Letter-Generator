@@ -54,6 +54,12 @@
             align-items: top; 
             height: 1vh; 
         }
+        .containernav {
+            display: flex; 
+            justify-content: center;  
+            align-items: center; 
+            height: 3vh; 
+        }
         a {
             margin: 0 10px;
             text-decoration: none; 
@@ -86,28 +92,21 @@
         button:hover {
             background-color: #007bff;
         }
-        .navbar {
-            overflow: hidden;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            background-color: #000000;
-            color: #ffffff;
-        }
-        .navbar a {
+        .containernav a {
             float: center;
             padding: 10px 20px;
             color: #ffffff;
             text-align: center;
             text-decoration: none;
         }
-        .navbar a:hover {
+        .containernav a:hover {
             background-color: #007bff;
             color: black;
         }
-        .navbar .icon {
+        .containernav .icon {
             display: none;
         }
+        
         #coverLetterOutput {
             white-space: pre-wrap;
             word-wrap: break-word;
@@ -115,7 +114,7 @@
             border: 1px solid #000000;
             padding: 20px;
             max-height: 500px;
-             }
+            }
             .image-button {
                 display: inline-block;
                 margin: 20px;
@@ -137,12 +136,11 @@
         <h4 class="centered-paragraph"> Cover Letter Generator</h4>
     </header>
     <nav>
-   <div class="container">
-        <a href="index.html">Cover Letter Generator</a>
-        <a href="index1.html">Cold Email Generator</a>
+    <div class="containernav">
+        <a href="index.html">Cover Letter </a>
+        <a href="index1.html">Cold Email </a>
     </div>
-</nav>
-
+    </nav>
         <form id="coverLetterForm">
             <label for="date">Date:</label>
             <input type="text" id="date" required>
@@ -170,28 +168,34 @@
             <input type="text" id="company" required>
             <label for="skills">Key Skills [use comma to separate]:</label>
             <input type="text" id="skills" required>
-            <button type="submit">Generate Cover Letter</button>
+            <button type="submit" id="generateButton">Generate Cover Letter</button>
         </form>
         <h3>Cover Letter:</h3>
         <pre id="coverLetterOutput"></pre>
     </div>
     <button id="copyButton">Copy Text</button>
     <script>
-        function typeText(element, text, delay) {
+        function typeText(element, text, delay, callback) {
             let index = 0;
             function type() {
                 if (index < text.length) {
                     element.textContent += text[index];
                     index++;
                     setTimeout(type, delay);
+                } else {
+                    callback();
                 }
             }
             type();
         }
-
-
-        document.getElementById('coverLetterForm').addEventListener('submit', function(event) {
+    
+        document.getElementById('coverLetterForm').addEventListener('submit', function(event) { 
             event.preventDefault();
+            const generateButton = document.getElementById('generateButton');
+            generateButton.disabled = true;
+    
+            console.log("Form submitted, generating cover letter...");
+
             const date = document.getElementById('date').value;
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
@@ -229,7 +233,9 @@ Warm regards,
 ${name}\n`;
 const coverLetterOutput = document.getElementById('coverLetterOutput');
 coverLetterOutput.textContent = '';
-typeText(coverLetterOutput, coverLetter, 30);
+typeText(coverLetterOutput, coverLetter, 30, function() {
+    generateButton.disabled = false;
+});
 });
 
 document.getElementById('copyButton').addEventListener('click', function() {
@@ -248,5 +254,7 @@ navigator.clipboard.writeText(coverLetterText).then(() => {
             <a href="index2.html">Privacy Policy</a> 
             <a href="index3.html">Terms & Conditions</a></div>
     </footer>
+</body>
+</html>
 </body>
 </html>
