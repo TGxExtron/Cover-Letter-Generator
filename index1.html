@@ -54,6 +54,12 @@
             align-items: top; 
             height: 1vh; 
         }
+        .containernav { 
+            display: flex; 
+            justify-content: center;  
+            align-items: center; 
+            height: 3vh; 
+        }
         a {
             margin: 0 10px;
             text-decoration: none; 
@@ -86,26 +92,18 @@
         button:hover {
             background-color: #007bff;
         }
-        .navbar {
-            overflow: hidden;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            background-color: #000000;
-            color: #ffffff;
-        }
-        .navbar a {
+        .containernav a {
             float: center;
             padding: 10px 20px;
             color: #ffffff;
             text-align: center;
             text-decoration: none;
         }
-        .navbar a:hover {
+        .containernav a:hover {
             background-color: #007bff;
             color: black;
         }
-        .navbar .icon {
+        .containernav .icon {
             display: none;
         }
         #coldemailOutput{
@@ -115,7 +113,7 @@
             border: 1px solid #000000;
             padding: 20px;
             max-height: 500px;
-             }
+        }
             .image-button {
                 display: inline-block;
                 margin: 20px;
@@ -137,9 +135,9 @@
     </header>
     <div>
         <nav>
-            <div class="navbar">
-                <a href="index.html">Cover Letter Generator</a>
-                <a href="index1.html">Cold Email Generator</a>
+            <div class="containernav">
+                <a href="index.html">Cover Letter</a>
+                <a href="index1.html">Cold Email</a>
             </div>
         </nav>
         <form id="coldemailgeneratorform">
@@ -163,7 +161,7 @@
             <input type="text" id="employer" required>
             <label for="responsibility">Previous/Current Job Responsibility:</label>
             <input type="text" id="responsibility" required>
-            <button type="submit">Generate Cold Email</button>
+            <button type="submit" id="generateButton">Generate Cold Email</button>
         </form>
         <h3>Cold Email:</h3>
         <pre id="coldemailOutput"></pre>
@@ -181,7 +179,11 @@
             }
             type();
         }
+    
         document.getElementById('coldemailgeneratorform').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const generateButton = document.getElementById('generateButton');
+            generateButton.disabled = true;
             event.preventDefault();
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
@@ -197,9 +199,11 @@
 
             const coldemailOutput = document.getElementById('coldemailOutput');
             coldemailOutput.textContent = '';
-            typeText(coldemailOutput, coldemail, 30);
+            typeText(coldemailOutput, coldemail, 30, function() {
+                generateButton.disabled = false;
+            });
         });
-
+    
         document.getElementById('copyButton').addEventListener('click', function() {
             const coldemailText = document.getElementById('coldemailOutput').textContent;
             navigator.clipboard.writeText(coldemailText).then(() => {
