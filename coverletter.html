@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="google-site-verification" content="bAi_29SHhBVuhcoaU-lI1CT5S9I0WUgTBg0YORp2x4o" />
+    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" href="/icon/apple-touch-icon.jpg">
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
+    <meta name="theme-color" content="#000000"/>
+    <meta property="og:image" content="https://github.com/TGxExtron/Cover-Letter-Generator/blob/main/icon/favicon.png?raw=true" />
+    <meta charset="UTF-8">
+    <meta name="description" content="Generate professional cover letters easily with Cover Craft. Enter your details, and get a personalized cover letter.">
+    <meta name="keywords" content="cover letter, cover letter generator, professional cover letter, job application, resume, Cover Craft">
+    <meta name="author" content="TCxExtron">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="Cover Craft - Cold Email Generator">
+    <meta property="og:description" content="Generate professional cover letters easily with Cover Craft. Enter your details, and get a personalized cover letter.">
+    <meta property="og:url" content="https://coverlettercraft.netlify.app/coverletter">
+    <meta property="og:type" content="website">
+    <title>Cover Craft - Cover Letter</title>
+    <link rel="icon" type="image/png" href="/icon/favicon.png">
+    <link rel="canonical" href="https://coverlettercraft.netlify.app/coverletter">
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
+    <script type="application/ld+json">
+    {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Cover Craft",
+    "url": "https://coverlettercraft.netlify.app/coverletter",
+    "description": "Generate professional cover letters easily with Cover Craft. Enter your details, and get a personalized cover letter.",
+    "publisher": {
+        "@type": "Organization",
+        "name": "PrimeByte Soft"
+    },
+    "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://coverlettercraft.netlify.app/coverletter/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+    }
+    }
+    </script>
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+    --neon-light: #ffca4a;
+    --neon-dark: #fbca3c;
+    --bg-dark: #000;
+    --bg-mid: #0d0d0d;
+    }
+    body {
+    font-family: 'Orbitron', sans-serif;
+    background: radial-gradient(ellipse at center, var(--bg-mid) 0%, var(--bg-dark) 70%);
+    color: #fff;
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
+    }
+    body::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: transparent url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600"><circle cx="100" cy="150" r="1" fill="white"/><circle cx="200" cy="80" r="0.8" fill="white"/><circle cx="400" cy="300" r="1.2" fill="white"/><circle cx="600" cy="200" r="1" fill="white"/><circle cx="350" cy="450" r="0.9" fill="white"/></svg>') repeat;
+    background-size: 200px 200px;
+    animation: animateBackground 60s linear infinite;
+    z-index: -2;
+    }
+    @keyframes animateBackground { from { background-position: 0 0; } to { background-position: -200px -200px; } }
+    body::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(135deg, transparent, rgba(255,202,74,0.1), transparent);
+    opacity: 0.5;
+    animation: gradientShift 10s ease-in-out infinite alternate;
+    z-index: -1;
+    }
+    @keyframes gradientShift { from { opacity: 0.3; } to { opacity: 0.7; } }
+
+    nav { 
+    background: transparent; 
+    padding: 10px 0; 
+    position: relative; 
+    width: 100%; 
+    z-index: 100; 
+    }
+    .nav-container { 
+    display: flex; 
+    justify-content: flex-end; 
+    gap: 15px; 
+    flex-wrap: wrap; 
+    }
+    nav a { 
+    color: #ffca4a; 
+    font-size: 1.1rem; 
+    padding: 10px 15px; 
+    text-decoration: none; 
+    border: 1px solid transparent; 
+    transition: all 0.3s ease; 
+    }
+    nav a:hover { 
+    border: 1px solid var(--neon-light); 
+    box-shadow: 0 0 10px var(--neon-light); 
+    }
+    @media (max-width: 600px) {
+    .nav-container { justify-content: center; }
+    nav a { font-size: 1rem; padding: 8px 12px; }
+    }
+
+    .progress-container { width: 100%; background: #222; border-radius: 3px; overflow: hidden; margin-bottom: 20px; }
+    .progress-bar { height: 5px; width: 0%; background: linear-gradient(90deg, var(--neon-light), var(--neon-dark)); transition: width 0.5s ease; }
+
+    #formContainer {
+    max-width: 40%;
+    margin: 140px auto 40px;
+    padding: 20px;
+    }
+
+    .form-step {
+    background: rgba(0, 0, 0, 0.85);
+    border: 1px solid #333;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 0 30px rgba(255, 202, 74, 0.5);
+    animation: fadeIn 0.8s ease-in-out;
+    }
+
+    @media screen and (max-width: 767px) {
+    #formContainer {
+        max-width: 90%;
+        margin: 140px auto 40px;
+        padding: 20px;
+}
+    .form-step {
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+}
+
+    @media (max-width: 480px) {
+    #formContainer {
+        margin: 40px auto 10px;
+        padding: 10px;
+    }
+    .form-step {
+        padding: 10px;
+        margin-bottom: 15px;
+    }
+}
+
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .form-step h2 { margin-bottom: 20px; text-align: center; color: var(--neon-light); font-size: 2rem; }
+    .form-step label { display: block; margin: 15px 0 5px; font-weight: bold; font-size: 1.2rem; }
+    .form-step input {
+    width: 100%; padding: 16px; font-size: 1.2rem; border: 2px solid #333; border-radius: 8px;
+    background: rgba(0, 0, 0, 0.7); color: #fff; transition: border 0.3s ease, box-shadow 0.3s ease;
+    }
+    .form-step input:focus { outline: none; border: 2px solid var(--neon-light); box-shadow: 0 0 12px var(--neon-light); }
+    .btn-group { text-align: center; margin-top: 20px; }
+    button {
+    padding: 12px 24px; margin: 0 10px; background: linear-gradient(90deg, var(--neon-light), var(--neon-dark));
+    border: none; border-radius: 50px; font-size: 1.2rem; cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; color: #000; min-width: 120px;
+    }
+    button:hover { transform: scale(1.05); box-shadow: 0 0 30px rgba(255,202,74,0.8); }
+    @media (max-width: 768px) { button { padding: 10px 20px; margin: 0 5px; font-size: 1rem; min-width: 100px; } }
+    @media (max-width: 480px) { button { padding: 8px 16px; margin: 0 3px; font-size: 0.9rem; min-width: 80px; } }
+
+    #coverLetterContainer {
+    background: transparent;
+    border: none;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 0 auto;
+    font-family: 'Courier New', monospace;
+    font-size: 1.2rem;
+    color: #fff;
+    white-space: pre-wrap;
+    box-shadow: 0 0 30px rgba(255,202,74,0.6);
+    width: 100%;
+    max-width: 190mm;
+    height: auto;
+    overflow: hidden;
+    }
+
+    #pdfWrapper {
+    background: #000;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    }
+
+    .pdf-version {
+    width: 210mm !important;
+    height: 297mm !important;
+    background: #000;
+    }
+    @media (max-width: 600px) {
+    #coverLetterContainer {
+        font-size: 1rem;
+        padding: 5px;
+        box-shadow: 0 0 20px rgba(255,202,74,0.6);
+    }
+}
+
+footer {
+    position: relative;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 30px 0;
+    margin: 0;
+    text-align: center;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0), rgba(51, 51, 51, 0));
+    color: #ffffff;
+    font-family: 'Roboto', sans-serif;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+footer p {
+    margin: 0;
+    font-size: 1.1rem;
+    letter-spacing: 1.5px;
+    opacity: 0.8; 
+}
+
+.footer-links {
+    margin-top: 15px;
+}
+footer a {
+    margin: 0 20px;
+    color: #ffca4a; 
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease;
+    position: relative;
+}
+
+footer a::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: #ffca4a;
+    transition: transform 0.3s ease;
+    transform: scaleX(0);
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+}
+
+footer a:hover {
+    color: #ffca4a;
+    transform: translateY(-2px);
+    text-shadow: 0 0 5px #ffca4a;
+}
+
+footer a:hover::after {
+    transform: scaleX(1);
+}
+
+@media (max-width: 768px) {
+    footer {
+        padding: 20px 0;
+    }
+    footer p {
+        font-size: 0.95rem;
+    }
+    footer a {
+        margin: 0 10px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    footer {
+        padding: 15px 0;
+    }
+    footer p {
+        font-size: 0.85rem;
+    }
+    footer a {
+        margin: 0 5px;
+        font-size: 0.85rem;
+    }
+}
+
+    @media print {
+    html, body { background: #000 !important; }
+    #coverLetterContainer { font-size: 1.2rem !important; background: #000 !important; color: #fff !important; }
+    }
+
+    .image-button {
+    display: inline-block;
+    margin: 20px;
+    border: none;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease;
+}
+
+.image-button:hover {
+    box-shadow: 0 0 40px rgba(255, 202, 74, 0.7);
+}
+
+.image-button img {
+    border-radius: 5px;
+    transition: transform 0.3s ease;
+}
+
+.image-button img:hover {
+    transform: scale(1.05);
+}
+
+</style>
+</head>
+<body>
+<nav>
+    <div class="nav-container">
+    <a href="/index.html">Home</a>
+    <a href="/coverletter.html">Cover Letter</a>
+    <a href="/coldemail.html">Cold Email</a>
+    </div>
+</nav>
+
+<div id="formContainer">
+    <div class="progress-container">
+    <div id="progressBar" class="progress-bar"></div>
+    </div>
+
+    <div class="form-step" id="step1">
+    <h2>Basic Info</h2>
+    <label for="date">Date:</label>
+    <input type="text" id="date" placeholder="e.g., August 12, 2025" required />
+    <label for="fullName">Full Name:</label>
+    <input type="text" id="fullName" placeholder="Your Name" required />
+    <label for="email">Email:</label>
+    <input type="email" id="email" placeholder="example@domain.com" required />
+    <label for="streetAddress">Street Address:</label>
+    <input type="text" id="streetAddress" placeholder="123 Futuristic Way" required />
+    <div class="btn-group">
+        <button type="button" onclick="nextStep(1)">Next</button>
+    </div>
+    </div>
+
+    <div class="form-step" id="step2" style="display:none;">
+    <h2>Contact Details</h2>
+    <label for="city">City:</label>
+    <input type="text" id="city" placeholder="Your City" required />
+    <label for="state">State (Province):</label>
+    <input type="text" id="state" placeholder="Your State" required />
+    <label for="country">Country:</label>
+    <input type="text" id="country" placeholder="Your Country" required />
+    <label for="pincode">Pincode:</label>
+    <input type="text" id="pincode" placeholder="Postal Code" required />
+    <label for="phone">Phone Number (Include Country Code):</label>
+    <input type="text" id="phone" placeholder="+1-1234567890" required />
+    <div class="btn-group">
+        <button type="button" onclick="prevStep(2)">Back</button>
+        <button type="button" onclick="nextStep(2)">Next</button>
+    </div>
+    </div>
+
+    <div class="form-step" id="step3" style="display:none;">
+    <h2>Job Details</h2>
+    <label for="position">Position Applied For:</label>
+    <input type="text" id="position" placeholder="Desired Position" required />
+    <label for="company">Company Name:</label>
+    <input type="text" id="company" placeholder="Company Name" required />
+    <label for="passion">Passion (e.g., Programming, Cycling):</label>
+    <input type="text" id="passion" placeholder="Your Passion" required />
+    <label for="skills">Key Skills (separated by commas):</label>
+    <input type="text" id="skills" placeholder="Skill1, Skill2, Skill3" required />
+    <div class="btn-group">
+        <button type="button" onclick="prevStep(3)">Back</button>
+        <button type="button" onclick="generateCoverLetter()">Generate Cover Letter</button>
+    </div>
+    </div>
+
+
+    <div class="form-step" id="step4" style="display:none;">
+    <h2>Your Cover Letter</h2>
+    <div id="pdfWrapper">
+        <div id="coverLetterContainer">
+        <div id="coverLetterOutput"></div>
+        </div>
+    </div>
+    <div class="btn-group">
+        <button type="button" onclick="prevStep(4)">Back</button>
+        <button type="button" id="downloadPdfButton">Download PDF</button>
+        <button type="button" id="copyButton">Copy</button>
+    </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script>
+    const totalSteps = 4;
+    let fullCoverLetterHTML = '';
+    let fullCoverLetterPlain = '';
+
+    function updateProgress(step) {
+      document.getElementById('progressBar').style.width = (step / totalSteps * 100) + '%';
+    }
+
+    function nextStep(currentStep) {
+    const currentDiv = document.getElementById('step' + currentStep);
+    const nextDiv = document.getElementById('step' + (currentStep + 1));
+    const inputs = currentDiv.querySelectorAll('input');
+    for (let input of inputs) {
+        if (!input.value.trim()) {
+        alert("Please fill in all the fields before continuing.");
+        return;
+        }
+    }
+    currentDiv.style.display = 'none';
+    nextDiv.style.display = 'block';
+    updateProgress(currentStep + 1);
+    window.scrollTo(0, 0);
+    }
+
+    function prevStep(currentStep) {
+    const currentDiv = document.getElementById('step' + currentStep);
+    const prevDiv = document.getElementById('step' + (currentStep - 1));
+    currentDiv.style.display = 'none';
+    prevDiv.style.display = 'block';
+    updateProgress(currentStep - 1);
+    window.scrollTo(0, 0);
+    }
+
+    function generateCoverLetter() {
+    const date = document.getElementById('date').value.trim();
+    const fullName = document.getElementById('fullName').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const streetAddress = document.getElementById('streetAddress').value.trim();
+    const city = document.getElementById('city').value.trim();
+    const state = document.getElementById('state').value.trim();
+    const pincode = document.getElementById('pincode').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const position = document.getElementById('position').value.trim();
+    const company = document.getElementById('company').value.trim();
+    const passion = document.getElementById('passion').value.trim();
+    const skills = document.getElementById('skills').value.trim();
+    const country = document.getElementById('country').value.trim();
+
+    fullCoverLetterHTML = 
+`${fullName}<br>
+${streetAddress}<br>
+${city}, ${state}, ${country} ${pincode}<br>
+${email}<br>
+${phone}<br>
+${date}<br><br>
+Hiring Manager,<br>
+${company}<br><br>
+Dear Hiring Manager,<br><br>
+I am writing to express my strong interest in the ${position} role at ${company}. My passion for ${passion} combined with my expertise in ${skills} uniquely qualifies me for this position.<br><br>
+Throughout my career, I have continuously worked to develop my skills and bring innovative solutions to the table. I am confident that my dedication and forward-thinking approach will make a positive impact on your team.<br><br>
+Thank you for considering my application. I look forward to the possibility of discussing how I can contribute to ${company}'s success.<br><br>
+Warm regards,<br>
+${fullName}`;
+
+    fullCoverLetterPlain = fullCoverLetterHTML.replace(/<br\s*\/?>/gi, "\n");
+
+    const backButton = document.querySelector('#step4 .btn-group button:nth-child(1)');
+    backButton.disabled = true;
+    document.getElementById('step3').style.display = 'none';
+    document.getElementById('step4').style.display = 'block';
+    updateProgress(totalSteps);
+    animateText(fullCoverLetterPlain);
+    }
+
+    function animateText(text) {
+    const outputDiv = document.getElementById('coverLetterOutput');
+    outputDiv.textContent = ''; 
+    let index = 0;
+    document.getElementById('downloadPdfButton').disabled = true;
+    document.getElementById('copyButton').disabled = true;
+
+    const interval = setInterval(() => {
+        if (index < text.length) {
+        outputDiv.textContent += text.charAt(index);
+        index++;
+        } else {
+        clearInterval(interval);
+        document.getElementById('downloadPdfButton').disabled = false;
+        document.getElementById('copyButton').disabled = false;
+        const backButton = document.querySelector('#step4 .btn-group button:nth-child(1)');
+        backButton.disabled = false;
+        }
+    }, 85);
+    }
+
+    document.getElementById('downloadPdfButton').addEventListener('click', async function () {
+    try {
+        const pdfWrapper = document.getElementById('pdfWrapper');
+        if (!pdfWrapper || !pdfWrapper.innerText.trim()) {
+        alert("No cover letter generated!");
+        return;
+        }
+
+        pdfWrapper.classList.add('pdf-version');
+        document.getElementById('coverLetterOutput').innerHTML = fullCoverLetterHTML;
+        pdfWrapper.scrollTop = 0;
+        await new Promise(resolve => setTimeout(resolve, 300));
+        const options = {
+        margin: 0,
+        filename: 'CoverLetter.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 0.8, scrollY: 0, backgroundColor: '#000000' },
+        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+        pagebreak: { mode: ['css', 'legacy'] }
+        };
+        await html2pdf().set(options).from(pdfWrapper).save();
+        alert("PDF generated successfully!");
+
+        pdfWrapper.classList.remove('pdf-version');
+    } catch (error) {
+        console.error("Error generating PDF:", error);
+        alert("Error generating PDF: " + error.message);
+    }
+    });
+
+    document.getElementById('copyButton').addEventListener('click', function () {
+    const coverLetterText = document.getElementById('coverLetterOutput').innerText;
+    navigator.clipboard.writeText(coverLetterText).then(() => {
+        alert("Cover letter copied to clipboard!");
+    }).catch(err => {
+        console.error("Error copying to clipboard:", err);
+        alert("Failed to copy: " + err.message);
+    });
+    });
+
+    updateProgress(1);
+</script>
+
+<footer>
+<a href="https://cover-craft.en.uptodown.com/android" class="image-button"><img src="/mediakit/Uptodown-button-getiton-black-small.png" alt="Uptodown"> </a>
+        <div class="footer-content">
+            <p>© Prime Bytesoft 2024. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="privacypolicy.html">Privacy Policy</a>
+                <a href="termscondition.html">Terms & Conditions</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

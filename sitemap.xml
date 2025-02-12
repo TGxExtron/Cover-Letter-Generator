@@ -4,24 +4,33 @@
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+
 <url>
   <loc>https://coverlettercraft.netlify.app/</loc>
   <lastmod>2024-12-14T14:36:14+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
-  <loc>https://coverlettercraft.netlify.app/index1</loc>
+  <loc>https://coverlettercraft.netlify.app/coverletter</loc>
   <lastmod>2024-12-14T14:36:14+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://coverlettercraft.netlify.app/index2</loc>
+  <loc>https://coverlettercraft.netlify.app/coldemail</loc>
   <lastmod>2024-12-14T14:36:14+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://coverlettercraft.netlify.app/index3</loc>
+  <loc>https://coverlettercraft.netlify.app/privacypolicy</loc>
   <lastmod>2024-12-14T14:36:14+00:00</lastmod>
   <priority>0.80</priority>
 </url>
+<url>
+  <loc>https://coverlettercraft.netlify.app/termscondition</loc>
+  <lastmod>2024-12-14T14:36:14+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+
 </urlset>
