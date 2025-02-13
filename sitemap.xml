@@ -8,27 +8,32 @@
 
 <url>
   <loc>https://coverlettercraft.netlify.app/</loc>
-  <lastmod>2025-02-12T08:57:46+00:00</lastmod>
+  <lastmod>2025-02-13T00:28:15+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
-  <loc>https://coverlettercraft.netlify.app/coverletter</loc>
-  <lastmod>2025-02-12T08:57:46+00:00</lastmod>
+  <loc>https://coverlettercraft.netlify.app/option</loc>
+  <lastmod>2025-02-13T00:28:15+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://coverlettercraft.netlify.app/privacypolicy</loc>
-  <lastmod>2025-02-12T08:57:46+00:00</lastmod>
+  <lastmod>2025-02-13T00:28:15+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://coverlettercraft.netlify.app/termscondition</loc>
-  <lastmod>2025-02-12T08:57:46+00:00</lastmod>
+  <lastmod>2025-02-13T00:28:15+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
+  <loc>https://coverlettercraft.netlify.app/coverletter</loc>
+  <lastmod>2025-02-13T00:28:15+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
   <loc>https://coverlettercraft.netlify.app/coldemail</loc>
-  <lastmod>2025-02-12T08:57:46+00:00</lastmod>
+  <lastmod>2025-02-13T00:28:15+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 
