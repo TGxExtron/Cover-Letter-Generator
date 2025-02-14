@@ -92,7 +92,7 @@ body {
     text-align: center;
 }
 
-.features-title, .about-title, .contact-title, .testimonials-title {
+.features-title, .about-title, .contact-title {
     font-size: 2.5rem;
     margin-bottom: 40px;
     background: linear-gradient(90deg, #ffca4a, #fbca3c);
@@ -169,6 +169,14 @@ body {
 .contact-button:hover {
     transform: scale(1.1);
     box-shadow: 0 0 20px rgba(255, 202 , 74, 0.5);
+}
+
+.testimonials-title{
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    background: linear-gradient(90deg, #ffca4a, #fbca3c);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .testimonials-grid {
@@ -279,25 +287,78 @@ body {
     top: 0;
     z-index: 1000;
 }
+
 .navbar img {
     height: 50px;
 }
+
 .nav-links {
     display: flex;
     list-style: none;
 }
+
 .nav-links li {
     margin: 0 10px;
 }
+
 .nav-links a {
     text-decoration: none;
     color: black;
     padding: 5px 10px;
     transition: background-color 0.3s;
 }
+
 .nav-links a:hover {
     background-color: rgba(0, 0, 0, 0.1);
 }
+
+.profile-menu {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+
+.profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.dropdown-menu {
+    display: none; 
+    position: absolute;
+    right: 0;     
+    top: 50px;    
+    background: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 5px;
+    z-index: 1001;
+    min-width: 150px; 
+}
+
+.dropdown-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 10px;
+}
+
+.dropdown-menu li a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    padding: 5px 10px;
+}
+
+.dropdown-menu li a:hover {
+    background: #333;
+}
+
+
+#google-signin-button {
+    margin-top: 20px;
+}
+
 
 footer {
     position: relative;
