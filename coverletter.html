@@ -449,19 +449,19 @@ footer a:hover::after {
     const country = document.getElementById('country').value.trim();
 
     fullCoverLetterHTML = 
-`${fullName}<br>
-${streetAddress}<br>
-${city}, ${state}, ${country} ${pincode}<br>
-${email}<br>
-${phone}<br>
-${date}<br><br>
-Hiring Manager,<br>
-${company}<br><br>
-Dear Hiring Manager,<br><br>
-I am writing to express my strong interest in the ${position} role at ${company}. My passion for ${passion} combined with my expertise in ${skills} uniquely qualifies me for this position.<br><br>
-Throughout my career, I have continuously worked to develop my skills and bring innovative solutions to the table. I am confident that my dedication and forward-thinking approach will make a positive impact on your team.<br><br>
-Thank you for considering my application. I look forward to the possibility of discussing how I can contribute to ${company}'s success.<br><br>
-Warm regards,<br>
+`${fullName}
+${streetAddress}
+${city}, ${state}, ${country} ${pincode}
+${email}
+${phone}
+${date}<br>
+Hiring Manager,
+${company}<br>
+Dear Hiring Manager,<br>
+I am writing to express my strong interest in the ${position} role at ${company}. My passion for ${passion} combined with my expertise in ${skills} uniquely qualifies me for this position.<br>
+Throughout my career, I have continuously worked to develop my skills and bring innovative solutions to the table. I am confident that my dedication and forward-thinking approach will make a positive impact on your team.<br>
+Thank you for considering my application. I look forward to the possibility of discussing how I can contribute to ${company}'s success.<br>
+Warm regards,
 ${fullName}`;
 
     fullCoverLetterPlain = fullCoverLetterHTML.replace(/<br\s*\/?>/gi, "\n");
@@ -492,7 +492,7 @@ ${fullName}`;
         const backButton = document.querySelector('#step4 .btn-group button:nth-child(1)');
         backButton.disabled = false;
         }
-    }, 85);
+    }, 45);
     }
 
     document.getElementById('downloadPdfButton').addEventListener('click', async function () {
