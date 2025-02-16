@@ -354,11 +354,58 @@ body {
     background: #333;
 }
 
-
-#google-signin-button {
-    margin-top: 20px;
+.popup-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 9999;
 }
-
+.popup-content {
+    background: rgba(10, 10, 10, 0.95);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(255, 202, 74, 0.8);
+    max-width: 400px;
+    width: 90%;
+    animation: fadeIn 0.3s ease-in-out;
+    position: relative;
+}
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    color: #ffca4a;
+    cursor: pointer;
+}
+.popup-btn {
+    background: linear-gradient(90deg, var(--neon-light, #ffca4a), var(--neon-dark, #fbca3c));
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s ease;
+    color: #000;
+    margin-top: 15px;
+}
+.popup-btn:hover {
+    box-shadow: 0 0 15px var(--neon-light, #ffca4a);
+}
+@keyframes fadeIn {
+    from { transform: translateY(-20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
 
 footer {
     position: relative;
