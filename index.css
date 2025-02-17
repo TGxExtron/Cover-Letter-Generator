@@ -407,6 +407,42 @@ body {
     to { transform: translateY(0); opacity: 1; }
 }
 
+.trustedby-section {
+    padding: 40px 10px;
+    text-align: center;
+}
+
+.trustedby-title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    background: linear-gradient(90deg, #ffca4a, #fbca3c);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.trustedby-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    max-width: 100%;
+    margin: 0 auto;
+    justify-items: center;
+}
+
+.trustedby-card {
+    background: #1a1a1a00;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+}
+
+.trustedby-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(255, 202, 74, 0.3);
+}
+
 footer {
     position: relative;
     bottom: 0;
