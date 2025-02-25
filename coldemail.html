@@ -38,414 +38,482 @@
     }
     }
     </script>
-<style>
+  <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
-    --neon-light: #ffca4a;
-    --neon-dark: #fbca3c;
-    --bg-dark: #000;
-    --bg-mid: #0d0d0d;
+      --neon-light: #ffca4a;
+      --neon-dark: #fbca3c;
+      --bg-dark: #000;
+      --bg-mid: #0d0d0d;
     }
-
     body {
-    font-family: 'Orbitron', sans-serif;
-    background: radial-gradient(ellipse at center, var(--bg-mid) 0%, var(--bg-dark) 70%);
-    color: #fff;
-    overflow-x: hidden;
-    position: relative;
-    min-height: 100vh;
+      font-family: 'Orbitron', sans-serif;
+      background: radial-gradient(ellipse at center, var(--bg-mid) 0%, var(--bg-dark) 70%);
+      color: #fff;
+      overflow-x: hidden;
+      position: relative;
+      min-height: 100vh;
     }
     body::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: transparent url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600"><circle cx="100" cy="150" r="1" fill="white"/><circle cx="200" cy="80" r="0.8" fill="white"/><circle cx="400" cy="300" r="1.2" fill="white"/><circle cx="600" cy="200" r="1" fill="white"/><circle cx="350" cy="450" r="0.9" fill="white"/></svg>') repeat;
-    background-size: 200px 200px;
-    animation: animateBackground 60s linear infinite;
-    z-index: -2;
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: transparent url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600"><circle cx="100" cy="150" r="1" fill="white"/><circle cx="200" cy="80" r="0.8" fill="white"/><circle cx="400" cy="300" r="1.2" fill="white"/><circle cx="600" cy="200" r="1" fill="white"/><circle cx="350" cy="450" r="0.9" fill="white"/></svg>') repeat;
+      background-size: 200px 200px;
+      animation: animateBackground 60s linear infinite;
+      z-index: -2;
     }
     @keyframes animateBackground { from { background-position: 0 0; } to { background-position: -200px -200px; } }
     body::after {
-    content: "";
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: linear-gradient(135deg, transparent, rgba(255,202,74,0.1), transparent);
-    opacity: 0.5;
-    animation: gradientShift 10s ease-in-out infinite alternate;
-    z-index: -1;
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: linear-gradient(135deg, transparent, rgba(255,202,74,0.1), transparent);
+      opacity: 0.5;
+      animation: gradientShift 10s ease-in-out infinite alternate;
+      z-index: -1;
     }
     @keyframes gradientShift { from { opacity: 0.3; } to { opacity: 0.7; } }
-
+    
     nav { 
-    background: transparent; 
-    padding: 10px 0; 
-    position: relative; 
-    width: 100%; 
-    z-index: 100; 
+      background: transparent; 
+      padding: 10px 0; 
+      position: relative; 
+      width: 100%; 
+      z-index: 100; 
     }
     .nav-container { 
-    display: flex; 
-    justify-content: flex-end; 
-    gap: 15px; 
-    flex-wrap: wrap; 
+      display: flex; 
+      justify-content: flex-end; 
+      gap: 15px; 
+      flex-wrap: wrap; 
     }
     nav a { 
-    color: #ffca4a; 
-    font-size: 1.1rem; 
-    padding: 10px 15px; 
-    text-decoration: none; 
-    border: 1px solid transparent; 
-    transition: all 0.3s ease; 
+      color: #ffca4a; 
+      font-size: 1.1rem; 
+      padding: 10px 15px; 
+      text-decoration: none; 
+      border: 1px solid transparent; 
+      transition: all 0.3s ease; 
     }
     nav a:hover { 
-    border: 1px solid var(--neon-light); 
-    box-shadow: 0 0 10px var(--neon-light); 
+      border: 1px solid var(--neon-light); 
+      box-shadow: 0 0 10px var(--neon-light); 
     }
     @media (max-width: 600px) {
-    .nav-container { justify-content: center; }
-    nav a { font-size: 1rem; padding: 8px 12px; }
+      .nav-container { justify-content: center; }
+      nav a { font-size: 1rem; padding: 8px 12px; }
     }
-
+    
     .progress-container { 
-    width: 100%; 
-    background: #222; 
-    border-radius: 3px; 
-    overflow: hidden; 
-    margin-bottom: 20px; 
+      width: 100%; 
+      background: #222; 
+      border-radius: 3px; 
+      overflow: hidden; 
+      margin-bottom: 20px; 
     }
     .progress-bar { 
-    height: 5px; 
-    width: 0%; 
-    background: linear-gradient(90deg, var(--neon-light), var(--neon-dark)); 
-    transition: width 0.5s ease; 
+      height: 5px; 
+      width: 0%; 
+      background: linear-gradient(90deg, var(--neon-light), var(--neon-dark)); 
+      transition: width 0.5s ease; 
     }
-
+    
     #formContainer {
-    max-width: 40%;
-    margin: 140px auto 40px;
-    padding: 20px;
+      max-width: 40%;
+      margin: 140px auto 40px;
+      padding: 20px;
     }
     .form-step {
-    background: rgba(0, 0, 0, 0.85);
-    border: 1px solid #333;
-    border-radius: 10px;
-    padding: 20px;
-    margin-bottom: 30px;
-    box-shadow: 0 0 30px rgba(255, 202, 74, 0.5);
-    animation: fadeIn 0.8s ease-in-out;
+      background: rgba(0, 0, 0, 0.85);
+      border: 1px solid #333;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 30px;
+      box-shadow: 0 0 30px rgba(255, 202, 74, 0.5);
+      animation: fadeIn 0.8s ease-in-out;
     }
     @media screen and (max-width: 767px) {
-    #formContainer { max-width: 90%; margin: 140px auto 40px; padding: 20px; }
-    .form-step { padding: 15px; margin-bottom: 20px; }
+      #formContainer { max-width: 90%; margin: 140px auto 40px; padding: 20px; }
+      .form-step { padding: 15px; margin-bottom: 20px; }
     }
     @media (max-width: 480px) {
-    #formContainer { margin: 40px auto 10px; padding: 10px; }
-    .form-step { padding: 10px; margin-bottom: 15px; }
+      #formContainer { margin: 40px auto 10px; padding: 10px; }
+      .form-step { padding: 10px; margin-bottom: 15px; }
     }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     .form-step h2 { 
-    margin-bottom: 20px; 
-    text-align: center; 
-    color: var(--neon-light); 
-    font-size: 2rem; 
+      margin-bottom: 20px; 
+      text-align: center; 
+      color: var(--neon-light); 
+      font-size: 2rem; 
     }
     .form-step label { 
-    display: block; 
-    margin: 15px 0 5px; 
-    font-weight: bold; 
-    font-size: 1.2rem; 
+      display: block; 
+      margin: 15px 0 5px; 
+      font-weight: bold; 
+      font-size: 1.2rem; 
     }
     .form-step input {
-    width: 100%; 
-    padding: 16px; 
-    font-size: 1.2rem; 
-    border: 2px solid #333; 
-    border-radius: 8px;
-    background: rgba(0, 0, 0, 0.7); 
-    color: #fff; 
-    transition: border 0.3s ease, box-shadow 0.3s ease;
+      width: 100%; 
+      padding: 16px; 
+      font-size: 1.2rem; 
+      border: 2px solid #333; 
+      border-radius: 8px;
+      background: rgba(0, 0, 0, 0.7); 
+      color: #fff; 
+      transition: border 0.3s ease, box-shadow 0.3s ease;
     }
     .form-step input:focus { 
-    outline: none; 
-    border: 2px solid var(--neon-light); 
-    box-shadow: 0 0 12px var(--neon-light); 
+      outline: none; 
+      border: 2px solid var(--neon-light); 
+      box-shadow: 0 0 12px var(--neon-light); 
     }
     .btn-group { text-align: center; margin-top: 20px; }
     button {
-    padding: 12px 24px; 
-    margin: 0 10px; 
-    background: linear-gradient(90deg, var(--neon-light), var(--neon-dark));
-    border: none; 
-    border-radius: 50px; 
-    font-size: 1.2rem; 
-    cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease; 
-    color: #000; 
-    min-width: 120px;
+      padding: 12px 24px; 
+      margin: 0 10px; 
+      background: linear-gradient(90deg, var(--neon-light), var(--neon-dark));
+      border: none; 
+      border-radius: 50px; 
+      font-size: 1.2rem; 
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease; 
+      color: #000; 
+      min-width: 120px;
     }
     button:hover { 
-    transform: scale(1.05); 
-    box-shadow: 0 0 30px rgba(255,202,74,0.8); 
+      transform: scale(1.05); 
+      box-shadow: 0 0 30px rgba(255,202,74,0.8); 
     }
-    @media (max-width: 768px) { button { padding: 10px 20px; margin: 0 5px; font-size: 1rem; min-width: 100px; } }
-    @media (max-width: 480px) { button { padding: 8px 16px; margin: 0 3px; font-size: 0.9rem; min-width: 80px; } }
-
+    @media (max-width: 768px) { 
+      button { padding: 10px 20px; margin: 0 5px; font-size: 1rem; min-width: 100px; } 
+    }
+    @media (max-width: 480px) { 
+      button { padding: 8px 16px; margin: 0 3px; font-size: 0.9rem; min-width: 80px; } 
+    }
+    
     #coldemailOutput {
-    background: transparent;
-    border: none;
-    padding: 10px;
-    border-radius: 10px;
-    margin: 0 auto;
-    font-family: 'Courier New', monospace;
-    font-size: 1.2rem;
-    color: #fff;
-    white-space: pre-wrap;
-    box-shadow: 0 0 30px rgba(255,202,74,0.6);
-    width: 100%;
-    max-width: 190mm;
-    height: auto;
-    overflow: hidden;
+      background: transparent;
+      border: none;
+      padding: 10px;
+      border-radius: 10px;
+      margin: 0 auto;
+      font-family: 'Courier New', monospace;
+      font-size: 1.2rem;
+      color: #fff;
+      white-space: pre-wrap;
+      box-shadow: 0 0 30px rgba(255,202,74,0.6);
+      width: 100%;
+      max-width: 190mm;
+      height: auto;
+      overflow: hidden;
     }
-
+    
     footer {
-    position: relative;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding: 30px 0;
-    margin: 0;
-    text-align: center;
-    background: linear-gradient(135deg, rgba(0,0,0,0), rgba(51,51,51,0));
-    color: #fff;
-    font-family: 'Roboto', sans-serif;
+      position: relative;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 30px 0;
+      margin: 0;
+      text-align: center;
+      background: linear-gradient(135deg, rgba(0,0,0,0), rgba(51,51,51,0));
+      color: #fff;
+      font-family: 'Roboto', sans-serif;
     }
     .footer-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
     }
     footer p {
-    margin: 0;
-    font-size: 1.1rem;
-    letter-spacing: 1.5px;
-    opacity: 0.8;
+      margin: 0;
+      font-size: 1.1rem;
+      letter-spacing: 1.5px;
+      opacity: 0.8;
     }
     .footer-links { margin-top: 15px; }
     footer a {
-    margin: 0 20px;
-    color: #ffca4a;
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease;
-    position: relative;
+      margin: 0 20px;
+      color: #ffca4a;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease;
+      position: relative;
     }
     footer a::after {
-    content: '';
-    display: block;
-    width: 100%;
-    height: 2px;
-    background: #ffca4a;
-    transition: transform 0.3s ease;
-    transform: scaleX(0);
-    position: absolute;
-    bottom: -5px;
-    left: 0;
+      content: '';
+      display: block;
+      width: 100%;
+      height: 2px;
+      background: #ffca4a;
+      transition: transform 0.3s ease;
+      transform: scaleX(0);
+      position: absolute;
+      bottom: -5px;
+      left: 0;
     }
     footer a:hover {
-    color: #ffca4a;
-    transform: translateY(-2px);
-    text-shadow: 0 0 5px #ffca4a;
+      color: #ffca4a;
+      transform: translateY(-2px);
+      text-shadow: 0 0 5px #ffca4a;
     }
     footer a:hover::after {
-    transform: scaleX(1);
+      transform: scaleX(1);
     }
     @media (max-width: 768px) {
-    footer { padding: 20px 0; }
-    footer p { font-size: 0.95rem; }
-    footer a { margin: 0 10px; font-size: 0.9rem; }
+      footer { padding: 20px 0; }
+      footer p { font-size: 0.95rem; }
+      footer a { margin: 0 10px; font-size: 0.9rem; }
     }
     @media (max-width: 480px) {
-    footer { padding: 15px 0; }
-    footer p { font-size: 0.85rem; }
-    footer a { margin: 0 5px; font-size: 0.85rem; }
+      footer { padding: 15px 0; }
+      footer p { font-size: 0.85rem; }
+      footer a { margin: 0 5px; font-size: 0.85rem; }
     }
     .image-button {
-    display: inline-block;
-    margin: 20px;
-    border: none;
-    cursor: pointer;
-    transition: box-shadow 0.3s ease;
-}
-
-.image-button:hover {
-    box-shadow: 0 0 40px rgba(255, 202, 74, 0.7);
-}
-
-.image-button img {
-    border-radius: 5px;
-    transition: transform 0.3s ease;
-}
-
-.image-button img:hover {
-    transform: scale(1.05);
-}
-
-</style>
+      display: inline-block;
+      margin: 20px;
+      border: none;
+      cursor: pointer;
+      transition: box-shadow 0.3s ease;
+    }
+    .image-button:hover {
+      box-shadow: 0 0 40px rgba(255, 202, 74, 0.7);
+    }
+    .image-button img {
+      border-radius: 5px;
+      transition: transform 0.3s ease;
+    }
+    .image-button img:hover {
+      transform: scale(1.05);
+    }
+    #toast {
+      visibility: hidden;
+      min-width: 250px;
+      background-color: #ffca4a;
+      color: #000000;
+      text-align: center;
+      border-radius: 50px;
+      padding: 16px;
+      position: fixed;
+      z-index: 9999;
+      left: 20px;
+      bottom: 30px;
+      font-size: 17px;
+    }
+    #toast.show {
+      visibility: visible;
+      -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+      animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    }
+    @-webkit-keyframes fadein {
+      from { bottom: 0; opacity: 0; }
+      to { bottom: 30px; opacity: 1; }
+    }
+    @keyframes fadein {
+      from { bottom: 0; opacity: 0; }
+      to { bottom: 30px; opacity: 1; }
+    }
+    @-webkit-keyframes fadeout {
+      from { bottom: 30px; opacity: 1; }
+      to { bottom: 0; opacity: 0; }
+    }
+    @keyframes fadeout {
+      from { bottom: 30px; opacity: 1; }
+      to { bottom: 0; opacity: 0; }
+    }
+  </style>
 </head>
 <body>
-<nav>
+  <nav>
     <div class="nav-container">
-    <a href="/index.html">Home</a>
-    <a href="/coldemail.html">Cold Email</a>
-    <a href="/coverletter.html">Cover Letter</a>
+      <a href="/index.html">Home</a>
+      <a href="/coldemail.html">Cold Email</a>
+      <a href="/coverletter.html">Cover Letter</a>
     </div>
-</nav>
-
-<div id="formContainer">
+  </nav>
+  
+  <div id="formContainer">
     <div class="progress-container">
-    <div id="progressBar" class="progress-bar"></div>
+      <div id="progressBar" class="progress-bar"></div>
     </div>
-
+    
     <div class="form-step" id="step1">
-    <h2>Basic Info</h2>
-    <label for="name">Full Name:</label>
-    <input type="text" id="name" placeholder="Your Full Name" required>
-    <label for="email">Email:</label>
-    <input type="email" id="email" placeholder="example@domain.com" required>
-    <label for="phone">Phone Number (Include Country Code):</label>
-    <input type="text" id="phone" placeholder="+1-1234567890" required>
-    <label for="linkedin">LinkedIn Profile URL:</label>
-    <input type="text" id="linkedin" placeholder="https://linkedin.com/in/yourprofile" required>
-    <div class="btn-group">
+      <h2>Basic Info</h2>
+      <label for="name">Full Name:</label>
+      <input type="text" id="name" placeholder="Your Full Name" required>
+      <label for="email">Email:</label>
+      <input type="email" id="email" placeholder="example@domain.com" required>
+      <label for="phone">Phone Number (Include Country Code):</label>
+      <input type="text" id="phone" placeholder="+1-1234567890" required>
+      <label for="linkedin">LinkedIn Profile URL:</label>
+      <input type="text" id="linkedin" placeholder="https://linkedin.com/in/yourprofile" required>
+      <div class="btn-group">
         <button type="button" onclick="nextStep(1)">Next</button>
+      </div>
     </div>
-    </div>
-
+    
     <div class="form-step" id="step2" style="display:none;">
-    <h2>Job Details</h2>
-    <label for="hr">Hiring Manager Name:</label>
-    <input type="text" id="hr" placeholder="Hiring Manager's Name" required>
-    <label for="job">Job Title:</label>
-    <input type="text" id="job" placeholder="Position Title" required>
-    <label for="company">Company Name:</label>
-    <input type="text" id="company" placeholder="Company Name" required>
-    <div class="btn-group">
+      <h2>Job Details</h2>
+      <label for="hr">Hiring Manager Name:</label>
+      <input type="text" id="hr" placeholder="Hiring Manager's Name" required>
+      <label for="job">Job Title:</label>
+      <input type="text" id="job" placeholder="Position Title" required>
+      <label for="company">Company Name:</label>
+      <input type="text" id="company" placeholder="Company Name" required>
+      <div class="btn-group">
         <button type="button" onclick="prevStep(2)">Back</button>
         <button type="button" onclick="nextStep(2)">Next</button>
+      </div>
     </div>
-    </div>
-
+    
     <div class="form-step" id="step3" style="display:none;">
-    <h2>Additional Info</h2>
-    <label for="skills">Skills [use comma to separate]:</label>
-    <input type="text" id="skills" placeholder="Skill1, Skill2, Skill3" required>
-    <label for="employer">Your Previous Employer/University:</label>
-    <input type="text" id="employer" placeholder="Your Employer or University" required>
-    <label for="responsibility">Previous/Current Job Responsibility:</label>
-    <input type="text" id="responsibility" placeholder="Describe your responsibility" required>
-    <div class="btn-group">
+      <h2>Additional Info</h2>
+      <label for="skills">Skills [use comma to separate]:</label>
+      <input type="text" id="skills" placeholder="Skill1, Skill2, Skill3" required>
+      <label for="employer">Your Previous Employer/University:</label>
+      <input type="text" id="employer" placeholder="Your Employer or University" required>
+      <label for="responsibility">Previous/Current Job Responsibility:</label>
+      <input type="text" id="responsibility" placeholder="Describe your responsibility" required>
+      <div class="btn-group">
         <button type="button" onclick="prevStep(3)">Back</button>
         <button type="button" onclick="generateColdEmail()">Generate Cold Email</button>
+      </div>
     </div>
-    </div>
-
+    
     <div class="form-step" id="step4" style="display:none;">
-    <h2>Your Cold Email</h2>
-    <pre id="coldemailOutput"></pre>
-    <div class="btn-group">
-        <button type="button" onclick="prevStep(4)">Back</button>
+      <h2>Your Cold Email</h2>
+      <pre id="coldemailOutput"></pre>
+      <div class="btn-group">
+        <button type="button" onclick="prevStep(4); showToast('Returning to Additional Info', 3000);">Back</button>
         <button type="button" id="copyButton">Copy</button>
+      </div>
     </div>
-    </div>
-</div>
-
-<footer>
-    <a href="https://cover-craft.en.uptodown.com/android" class="image-button"><img src="/mediakit/Uptodown-button-getiton-black-small.png" alt="Uptodown"> </a>
+  </div>
+  
+  <footer>
+    <a href="https://cover-craft.en.uptodown.com/android" class="image-button">
+      <img src="/mediakit/Uptodown-button-getiton-black-small.png" alt="Uptodown">
+    </a>
     <div class="footer-content">
-    <p>© PrimeByte Soft 2024. All rights reserved.</p>
-    <div class="footer-links">
+      <p>© PrimeByte Soft 2024. All rights reserved.</p>
+      <div class="footer-links">
         <a href="privacypolicy.html">Privacy Policy</a>
         <a href="termscondition.html">Terms & Conditions</a>
+      </div>
     </div>
-    </div>
-</footer>
+  </footer>
 
-<script>
+  <div id="toast"></div>
+  
+  <script>
     const totalSteps = 4;
     function updateProgress(step) {
       document.getElementById('progressBar').style.width = (step / totalSteps * 100) + '%';
     }
     
     function nextStep(currentStep) {
-    const currentDiv = document.getElementById('step' + currentStep);
-    const nextDiv = document.getElementById('step' + (currentStep + 1));
-    const inputs = currentDiv.querySelectorAll('input');
-    for (let input of inputs) {
+      const currentDiv = document.getElementById('step' + currentStep);
+      const nextDiv = document.getElementById('step' + (currentStep + 1));
+      const inputs = currentDiv.querySelectorAll('input');
+      for (let input of inputs) {
         if (!input.value.trim()) {
-        alert("Please fill in all the fields before continuing.");
-        return;
+          showToast("Please fill in all the fields before continuing.", 3000);
+          return;
         }
-    }
-    currentDiv.style.display = 'none';
-    nextDiv.style.display = 'block';
-    updateProgress(currentStep + 1);
-    window.scrollTo(0, 0);
+      }
+      currentDiv.style.display = 'none';
+      nextDiv.style.display = 'block';
+      updateProgress(currentStep + 1);
+      window.scrollTo(0, 0);
     }
     
     function prevStep(currentStep) {
-    const currentDiv = document.getElementById('step' + currentStep);
-    const prevDiv = document.getElementById('step' + (currentStep - 1));
-    currentDiv.style.display = 'none';
-    prevDiv.style.display = 'block';
-    updateProgress(currentStep - 1);
-    window.scrollTo(0, 0);
+      const currentDiv = document.getElementById('step' + currentStep);
+      const prevDiv = document.getElementById('step' + (currentStep - 1));
+      currentDiv.style.display = 'none';
+      prevDiv.style.display = 'block';
+      updateProgress(currentStep - 1);
+      window.scrollTo(0, 0);
     }
     
     function generateColdEmail() {
-    const name = document.getElementById('name').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const phone = document.getElementById('phone').value.trim();
-    const linkedin = document.getElementById('linkedin').value.trim();
-    const hr = document.getElementById('hr').value.trim();
-    const job = document.getElementById('job').value.trim();
-    const company = document.getElementById('company').value.trim();
-    const skills = document.getElementById('skills').value.trim();
-    const employer = document.getElementById('employer').value.trim();
-    const responsibility = document.getElementById('responsibility').value.trim();
-
-    const coldemail = `Subject: Application for ${job} Position\n\nDear ${hr},\n\nI hope this message finds you well. My name is ${name}, and I am reaching out to express my interest in the ${job} position at ${company}. With a strong background in ${skills}, I believe I am a perfect candidate for this role and could contribute effectively to your team.\n\nI have developed a solid foundation in ${skills}. My experience at ${employer}, where I ${responsibility}, has equipped me with the skills necessary for ${job}.\n\nI am particularly drawn to ${company} because of its reputation for innovation and excellence. The opportunity to work with your team excites me, and I am eager to contribute to ${company}’s continued success.\n\nI have attached my resume and portfolio for your review. I would be grateful for the opportunity to discuss how my background, skills, and enthusiasm align with the needs of your team. Thank you very much for considering my application.\n\nBest regards,\n${name}\n${phone}\n${linkedin}\n${email}\n`;
-
-    document.getElementById('step3').style.display = 'none';
-    document.getElementById('step4').style.display = 'block';
-    updateProgress(totalSteps);
-    typeText(document.getElementById('coldemailOutput'), coldemail, 30, function() {});
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const linkedin = document.getElementById('linkedin').value.trim();
+      const hr = document.getElementById('hr').value.trim();
+      const job = document.getElementById('job').value.trim();
+      const company = document.getElementById('company').value.trim();
+      const skills = document.getElementById('skills').value.trim();
+      const employer = document.getElementById('employer').value.trim();
+      const responsibility = document.getElementById('responsibility').value.trim();
+    
+      const coldemail = `Subject: Application for ${job} Position
+      
+Dear ${hr},
+      
+I hope this message finds you well. My name is ${name}, and I am reaching out to express my interest in the ${job} position at ${company}. With a strong background in ${skills}, I believe I am a perfect candidate for this role and could contribute effectively to your team.
+      
+I have developed a solid foundation in ${skills}. My experience at ${employer}, where I ${responsibility}, has equipped me with the skills necessary for ${job}.
+      
+I am particularly drawn to ${company} because of its reputation for innovation and excellence. The opportunity to work with your team excites me, and I am eager to contribute to ${company}’s continued success.
+      
+I have attached my resume and portfolio for your review. I would be grateful for the opportunity to discuss how my background, skills, and enthusiasm align with the needs of your team. Thank you very much for considering my application.
+      
+Best regards,
+${name}
+${phone}
+${linkedin}
+${email}
+`;
+    
+      document.getElementById('step3').style.display = 'none';
+      document.getElementById('step4').style.display = 'block';
+      updateProgress(totalSteps);
+      typeText(document.getElementById('coldemailOutput'), coldemail, 30, function() {});
+      
+      showToast("Cold email generated successfully!", 3000);
     }
-
+    
     function typeText(element, text, speed, callback) {
-    element.textContent = '';
-    let index = 0;
-    const interval = setInterval(() => {
+      element.textContent = '';
+      let index = 0;
+      const interval = setInterval(() => {
         if (index < text.length) {
-        element.textContent += text.charAt(index);
-        index++;
+          element.textContent += text.charAt(index);
+          index++;
         } else {
-        clearInterval(interval);
-        if (callback) callback();
+          clearInterval(interval);
+          if (callback) callback();
         }
-    }, speed);
+      }, speed);
     }
-
+    
     document.getElementById('copyButton').addEventListener('click', function () {
-    const coldemailText = document.getElementById('coldemailOutput').textContent;
-    navigator.clipboard.writeText(coldemailText).then(() => {
-        alert('Cold email copied to clipboard! Please review it carefully.');
-    }).catch(err => {
+      const coldemailText = document.getElementById('coldemailOutput').textContent;
+      navigator.clipboard.writeText(coldemailText).then(() => {
+        showToast("Cold email copied to clipboard! Please review it carefully.", 3000);
+      }).catch(err => {
         console.error('Failed to copy text: ', err);
+      });
     });
-    });
+    
     updateProgress(1);
-</script>
+    
+    
+    function showToast(message, duration = 3000) {
+      var toast = document.getElementById("toast");
+      toast.textContent = message;
+      toast.className = "show";
+      setTimeout(function(){
+        toast.className = toast.className.replace("show", "");
+      }, duration);
+    }
+  </script>
 </body>
 </html>

@@ -317,6 +317,42 @@ footer a:hover::after {
     transform: scale(1.05);
 }
 
+    #toast {
+    visibility: hidden;
+    min-width: 250px;
+    background-color: #ffca4a;
+    color: #000000;
+    text-align: center;
+    border-radius: 70px;
+    padding: 16px;
+    position: fixed;
+    z-index: 9999;
+    left: 20px;
+    bottom: 30px;
+    font-size: 17px;
+}
+
+    #toast.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+    @-webkit-keyframes fadein {
+    from { bottom: 0; opacity: 0; }
+    to { bottom: 30px; opacity: 1; }
+}
+    @keyframes fadein {
+    from { bottom: 0; opacity: 0; }
+    to { bottom: 30px; opacity: 1; }
+}
+    @-webkit-keyframes fadeout {
+    from { bottom: 30px; opacity: 1; }
+    to { bottom: 0; opacity: 0; }
+}
+    @keyframes fadeout {
+    from { bottom: 30px; opacity: 1; }
+    to { bottom: 0; opacity: 0; }
+}
 </style>
 </head>
 <body>
@@ -398,6 +434,8 @@ footer a:hover::after {
     </div>
 </div>
 
+<div id="toast"></div>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 <script>
     const totalSteps = 4;
@@ -469,80 +507,89 @@ Thank you for considering my application. I look forward to the opportunity to d
 Warm regards,
 ${fullName}`;
 
-    fullCoverLetterPlain = fullCoverLetterHTML.replace(/<br\s*\/?>/gi, "\n");
+fullCoverLetterPlain = fullCoverLetterHTML.replace(/<br\s*\/?>/gi, "\n");
 
+const backButton = document.querySelector('#step4 .btn-group button:nth-child(1)');
+backButton.disabled = true;
+document.getElementById('step3').style.display = 'none';
+document.getElementById('step4').style.display = 'block';
+updateProgress(totalSteps);
+animateText(fullCoverLetterPlain);
+
+showToast("Cover letter generated successfully!", 3000);
+}
+
+function animateText(text) {
+const outputDiv = document.getElementById('coverLetterOutput');
+outputDiv.textContent = ''; 
+let index = 0;
+document.getElementById('downloadPdfButton').disabled = true;
+document.getElementById('copyButton').disabled = true;
+
+const interval = setInterval(() => {
+    if (index < text.length) {
+    outputDiv.textContent += text.charAt(index);
+    index++;
+    } else {
+    clearInterval(interval);
+    document.getElementById('downloadPdfButton').disabled = false;
+    document.getElementById('copyButton').disabled = false;
     const backButton = document.querySelector('#step4 .btn-group button:nth-child(1)');
-    backButton.disabled = true;
-    document.getElementById('step3').style.display = 'none';
-    document.getElementById('step4').style.display = 'block';
-    updateProgress(totalSteps);
-    animateText(fullCoverLetterPlain);
+    backButton.disabled = false;
+    }
+}, 45);
+}
+
+document.getElementById('downloadPdfButton').addEventListener('click', async function () {
+try {
+    const pdfWrapper = document.getElementById('pdfWrapper');
+    if (!pdfWrapper || !pdfWrapper.innerText.trim()) {
+    showToast("No cover letter generated!", 3000);
+    return;
     }
 
-    function animateText(text) {
-    const outputDiv = document.getElementById('coverLetterOutput');
-    outputDiv.textContent = ''; 
-    let index = 0;
-    document.getElementById('downloadPdfButton').disabled = true;
-    document.getElementById('copyButton').disabled = true;
+    pdfWrapper.classList.add('pdf-version');
+    document.getElementById('coverLetterOutput').innerHTML = fullCoverLetterHTML;
+    pdfWrapper.scrollTop = 0;
+    await new Promise(resolve => setTimeout(resolve, 300));
+    const options = {
+    margin: 0,
+    filename: 'CoverLetter.pdf',
+    image: { type: 'jpeg', quality: 0.98 },
+    html2canvas: { scale: 0.8, scrollY: 0, backgroundColor: '#000000' },
+    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+    pagebreak: { mode: ['css', 'legacy'] }
+    };
+    await html2pdf().set(options).from(pdfWrapper).save();
+    showToast("PDF generated successfully!", 3000);
+    pdfWrapper.classList.remove('pdf-version');
+} catch (error) {
+    console.error("Error generating PDF:", error);
+    showToast("Error generating PDF: " + error.message, 3000);
+}
+});
 
-    const interval = setInterval(() => {
-        if (index < text.length) {
-        outputDiv.textContent += text.charAt(index);
-        index++;
-        } else {
-        clearInterval(interval);
-        document.getElementById('downloadPdfButton').disabled = false;
-        document.getElementById('copyButton').disabled = false;
-        const backButton = document.querySelector('#step4 .btn-group button:nth-child(1)');
-        backButton.disabled = false;
-        }
-    }, 45);
-    }
+document.getElementById('copyButton').addEventListener('click', function () {
+const coverLetterText = document.getElementById('coverLetterOutput').innerText;
+navigator.clipboard.writeText(coverLetterText).then(() => {
+    showToast("Cover letter copied to clipboard!", 3000);
+}).catch(err => {
+    console.error("Error copying to clipboard:", err);
+    showToast("Failed to copy: " + err.message, 3000);
+});
+});
 
-    document.getElementById('downloadPdfButton').addEventListener('click', async function () {
-    try {
-        const pdfWrapper = document.getElementById('pdfWrapper');
-        if (!pdfWrapper || !pdfWrapper.innerText.trim()) {
-        alert("No cover letter generated!");
-        return;
-        }
+updateProgress(1);
 
-        pdfWrapper.classList.add('pdf-version');
-        document.getElementById('coverLetterOutput').innerHTML = fullCoverLetterHTML;
-        pdfWrapper.scrollTop = 0;
-        await new Promise(resolve => setTimeout(resolve, 300));
-        const options = {
-        margin: 0,
-        filename: 'CoverLetter.pdf',
-        image: { type: 'jpeg', quality: 0.98 },
-        html2canvas: { scale: 0.8, scrollY: 0, backgroundColor: '#000000' },
-        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
-        pagebreak: { mode: ['css', 'legacy'] }
-        };
-        await html2pdf().set(options).from(pdfWrapper).save();
-        alert("PDF generated successfully!");
-
-        pdfWrapper.classList.remove('pdf-version');
-    } catch (error) {
-        console.error("Error generating PDF:", error);
-        alert("Error generating PDF: " + error.message);
-    }
-    });
-
-    document.getElementById('copyButton').addEventListener('click', function () {
-    const coverLetterText = document.getElementById('coverLetterOutput').innerText;
-    navigator.clipboard.writeText(coverLetterText).then(() => {
-        alert("Cover letter copied to clipboard!");
-    }).catch(err => {
-        console.error("Error copying to clipboard:", err);
-        alert("Failed to copy: " + err.message);
-    });
-    });
-
-    updateProgress(1);
+function showToast(message, duration = 3000) {
+var toast = document.getElementById("toast");
+toast.textContent = message;
+toast.className = "show";
+setTimeout(function(){
+    toast.className = toast.className.replace("show", "");
+}, duration);
+}
 </script>
-
 <footer>
 <a href="https://cover-craft.en.uptodown.com/android" class="image-button"><img src="/mediakit/Uptodown-button-getiton-black-small.png" alt="Uptodown"> </a>
         <div class="footer-content">
