@@ -389,7 +389,9 @@
       <h2>Your Cold Email</h2>
       <pre id="coldemailOutput"></pre>
       <div class="btn-group">
-        <button type="button" onclick="prevStep(4); showToast('Returning to Additional Info', 3000);">Back</button>
+
+        <button type="button" id="backStep4Button" onclick="prevStep(4); showToast('Returning to Additional Info', 3000);">Back</button>
+
         <button type="button" id="copyButton">Copy</button>
       </div>
     </div>
@@ -410,8 +412,12 @@
 
   <div id="toast"></div>
   
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
   <script>
     const totalSteps = 4;
+    let fullCoverLetterHTML = '';
+    let fullCoverLetterPlain = '';
+
     function updateProgress(step) {
       document.getElementById('progressBar').style.width = (step / totalSteps * 100) + '%';
     }
@@ -475,23 +481,51 @@ ${email}
       document.getElementById('step3').style.display = 'none';
       document.getElementById('step4').style.display = 'block';
       updateProgress(totalSteps);
-      typeText(document.getElementById('coldemailOutput'), coldemail, 30, function() {});
+
+      const backButton = document.getElementById('backStep4Button');
+      const copyButton = document.getElementById('copyButton');
+      backButton.disabled = true;
+      copyButton.disabled = true;
+
+      typeTextWorker(document.getElementById('coldemailOutput'), coldemail, 30, function() {
+        backButton.disabled = false;
+        copyButton.disabled = false;
+      });
       
       showToast("Cold email generated successfully!", 3000);
     }
     
-    function typeText(element, text, speed, callback) {
-      element.textContent = '';
-      let index = 0;
-      const interval = setInterval(() => {
-        if (index < text.length) {
-          element.textContent += text.charAt(index);
-          index++;
-        } else {
-          clearInterval(interval);
+    function typeTextWorker(element, text, speed, callback) {
+
+      const workerCode = `
+        self.onmessage = function(e) {
+          const text = e.data.text;
+          const speed = e.data.speed;
+          let index = 0;
+          function type() {
+            if (index < text.length) {
+              self.postMessage({ char: text.charAt(index) });
+              index++;
+              setTimeout(type, speed);
+            } else {
+              self.postMessage({ done: true });
+            }
+          }
+          type();
+        };
+      `;
+      const blob = new Blob([workerCode], { type: 'application/javascript' });
+      const worker = new Worker(URL.createObjectURL(blob));
+      
+      worker.onmessage = function(e) {
+        if (e.data.char !== undefined) {
+          element.textContent += e.data.char;
+        } else if (e.data.done) {
+          worker.terminate();
           if (callback) callback();
         }
-      }, speed);
+      };
+      worker.postMessage({ text: text, speed: speed });
     }
     
     document.getElementById('copyButton').addEventListener('click', function () {
@@ -504,7 +538,6 @@ ${email}
     });
     
     updateProgress(1);
-    
     
     function showToast(message, duration = 3000) {
       var toast = document.getElementById("toast");

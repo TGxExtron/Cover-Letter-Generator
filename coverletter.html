@@ -358,79 +358,78 @@ footer a:hover::after {
 <body>
 <nav>
     <div class="nav-container">
-    <a href="/index.html">Home</a>
-    <a href="/coverletter.html">Cover Letter</a>
-    <a href="/coldemail.html">Cold Email</a>
+      <a href="/index.html">Home</a>
+      <a href="/coverletter.html">Cover Letter</a>
+      <a href="/coldemail.html">Cold Email</a>
     </div>
 </nav>
 
 <div id="formContainer">
     <div class="progress-container">
-    <div id="progressBar" class="progress-bar"></div>
+      <div id="progressBar" class="progress-bar"></div>
     </div>
 
     <div class="form-step" id="step1">
-    <h2>Basic Info</h2>
-    <label for="date">Date:</label>
-    <input type="text" id="date" placeholder="e.g., August 12, 2025" required />
-    <label for="fullName">Full Name:</label>
-    <input type="text" id="fullName" placeholder="Your Name" required />
-    <label for="email">Email:</label>
-    <input type="email" id="email" placeholder="example@domain.com" required />
-    <label for="streetAddress">Street Address:</label>
-    <input type="text" id="streetAddress" placeholder="123 Futuristic Way" required />
-    <div class="btn-group">
-        <button type="button" onclick="nextStep(1)">Next</button>
-    </div>
+      <h2>Basic Info</h2>
+      <label for="date">Date:</label>
+      <input type="text" id="date" placeholder="e.g., August 12, 2025" required />
+      <label for="fullName">Full Name:</label>
+      <input type="text" id="fullName" placeholder="Your Name" required />
+      <label for="email">Email:</label>
+      <input type="email" id="email" placeholder="example@domain.com" required />
+      <label for="streetAddress">Street Address:</label>
+      <input type="text" id="streetAddress" placeholder="123 Futuristic Way" required />
+      <div class="btn-group">
+          <button type="button" onclick="nextStep(1)">Next</button>
+      </div>
     </div>
 
     <div class="form-step" id="step2" style="display:none;">
-    <h2>Contact Details</h2>
-    <label for="city">City:</label>
-    <input type="text" id="city" placeholder="Your City" required />
-    <label for="state">State (Province):</label>
-    <input type="text" id="state" placeholder="Your State" required />
-    <label for="country">Country:</label>
-    <input type="text" id="country" placeholder="Your Country" required />
-    <label for="pincode">Pincode:</label>
-    <input type="text" id="pincode" placeholder="Postal Code" required />
-    <label for="phone">Phone Number (Include Country Code):</label>
-    <input type="text" id="phone" placeholder="+1-1234567890" required />
-    <div class="btn-group">
-        <button type="button" onclick="prevStep(2)">Back</button>
-        <button type="button" onclick="nextStep(2)">Next</button>
-    </div>
+      <h2>Contact Details</h2>
+      <label for="city">City:</label>
+      <input type="text" id="city" placeholder="Your City" required />
+      <label for="state">State (Province):</label>
+      <input type="text" id="state" placeholder="Your State" required />
+      <label for="country">Country:</label>
+      <input type="text" id="country" placeholder="Your Country" required />
+      <label for="pincode">Pincode:</label>
+      <input type="text" id="pincode" placeholder="Postal Code" required />
+      <label for="phone">Phone Number (Include Country Code):</label>
+      <input type="text" id="phone" placeholder="+1-1234567890" required />
+      <div class="btn-group">
+          <button type="button" onclick="prevStep(2)">Back</button>
+          <button type="button" onclick="nextStep(2)">Next</button>
+      </div>
     </div>
 
     <div class="form-step" id="step3" style="display:none;">
-    <h2>Job Details</h2>
-    <label for="position">Position Applied For:</label>
-    <input type="text" id="position" placeholder="Desired Position" required />
-    <label for="company">Company Name:</label>
-    <input type="text" id="company" placeholder="Company Name" required />
-    <label for="passion">Passion (e.g., Programming, Cycling):</label>
-    <input type="text" id="passion" placeholder="Your Passion" required />
-    <label for="skills">Key Skills (separated by commas):</label>
-    <input type="text" id="skills" placeholder="Skill1, Skill2, Skill3" required />
-    <div class="btn-group">
-        <button type="button" onclick="prevStep(3)">Back</button>
-        <button type="button" onclick="generateCoverLetter()">Generate Cover Letter</button>
+      <h2>Job Details</h2>
+      <label for="position">Position Applied For:</label>
+      <input type="text" id="position" placeholder="Desired Position" required />
+      <label for="company">Company Name:</label>
+      <input type="text" id="company" placeholder="Company Name" required />
+      <label for="passion">Passion (e.g., Programming, Cycling):</label>
+      <input type="text" id="passion" placeholder="Your Passion" required />
+      <label for="skills">Key Skills (separated by commas):</label>
+      <input type="text" id="skills" placeholder="Skill1, Skill2, Skill3" required />
+      <div class="btn-group">
+          <button type="button" onclick="prevStep(3)">Back</button>
+          <button type="button" onclick="generateCoverLetter()">Generate Cover Letter</button>
+      </div>
     </div>
-    </div>
-
 
     <div class="form-step" id="step4" style="display:none;">
-    <h2>Your Cover Letter</h2>
-    <div id="pdfWrapper">
-        <div id="coverLetterContainer">
-        <div id="coverLetterOutput"></div>
-        </div>
-    </div>
-    <div class="btn-group">
-        <button type="button" onclick="prevStep(4)">Back</button>
-        <button type="button" id="downloadPdfButton">Download PDF</button>
-        <button type="button" id="copyButton">Copy</button>
-    </div>
+      <h2>Your Cover Letter</h2>
+      <div id="pdfWrapper">
+          <div id="coverLetterContainer">
+              <div id="coverLetterOutput"></div>
+          </div>
+      </div>
+      <div class="btn-group">
+          <button type="button" onclick="prevStep(4)">Back</button>
+          <button type="button" id="downloadPdfButton">Download PDF</button>
+          <button type="button" id="copyButton">Copy</button>
+      </div>
     </div>
 </div>
 
@@ -438,40 +437,40 @@ footer a:hover::after {
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 <script>
-    const totalSteps = 4;
-    let fullCoverLetterHTML = '';
-    let fullCoverLetterPlain = '';
+  const totalSteps = 4;
+  let fullCoverLetterHTML = '';
+  let fullCoverLetterPlain = '';
 
-    function updateProgress(step) {
-      document.getElementById('progressBar').style.width = (step / totalSteps * 100) + '%';
-    }
+  function updateProgress(step) {
+    document.getElementById('progressBar').style.width = (step / totalSteps * 100) + '%';
+  }
 
-    function nextStep(currentStep) {
+  function nextStep(currentStep) {
     const currentDiv = document.getElementById('step' + currentStep);
     const nextDiv = document.getElementById('step' + (currentStep + 1));
     const inputs = currentDiv.querySelectorAll('input');
     for (let input of inputs) {
-        if (!input.value.trim()) {
+      if (!input.value.trim()) {
         alert("Please fill in all the fields before continuing.");
         return;
-        }
+      }
     }
     currentDiv.style.display = 'none';
     nextDiv.style.display = 'block';
     updateProgress(currentStep + 1);
     window.scrollTo(0, 0);
-    }
+  }
 
-    function prevStep(currentStep) {
+  function prevStep(currentStep) {
     const currentDiv = document.getElementById('step' + currentStep);
     const prevDiv = document.getElementById('step' + (currentStep - 1));
     currentDiv.style.display = 'none';
     prevDiv.style.display = 'block';
     updateProgress(currentStep - 1);
     window.scrollTo(0, 0);
-    }
+  }
 
-    function generateCoverLetter() {
+  function generateCoverLetter() {
     const date = document.getElementById('date').value.trim();
     const fullName = document.getElementById('fullName').value.trim();
     const email = document.getElementById('email').value.trim();
@@ -487,7 +486,7 @@ footer a:hover::after {
     const country = document.getElementById('country').value.trim();
 
     fullCoverLetterHTML = 
-`${fullName}
+      `${fullName}
 ${streetAddress}
 ${city}, ${state}, ${country} ${pincode}
 ${email}
@@ -507,98 +506,119 @@ Thank you for considering my application. I look forward to the opportunity to d
 Warm regards,
 ${fullName}`;
 
-fullCoverLetterPlain = fullCoverLetterHTML.replace(/<br\s*\/?>/gi, "\n");
+    fullCoverLetterPlain = fullCoverLetterHTML.replace(/<br\s*\/?>/gi, "\n");
 
-const backButton = document.querySelector('#step4 .btn-group button:nth-child(1)');
-backButton.disabled = true;
-document.getElementById('step3').style.display = 'none';
-document.getElementById('step4').style.display = 'block';
-updateProgress(totalSteps);
-animateText(fullCoverLetterPlain);
+    const now = Date.now();
+    localStorage.setItem("coverLetterStartTime", now);
+    localStorage.setItem("coverLetterText", fullCoverLetterPlain);
 
-showToast("Cover letter generated successfully!", 3000);
-}
+    document.getElementById('step3').style.display = 'none';
+    document.getElementById('step4').style.display = 'block';
+    updateProgress(totalSteps);
+    window.scrollTo(0, 0);
 
-function animateText(text) {
-const outputDiv = document.getElementById('coverLetterOutput');
-outputDiv.textContent = ''; 
-let index = 0;
-document.getElementById('downloadPdfButton').disabled = true;
-document.getElementById('copyButton').disabled = true;
+    animateText(fullCoverLetterPlain, now);
+    showToast("Cover letter generated successfully!", 3000);
+  }
 
-const interval = setInterval(() => {
-    if (index < text.length) {
-    outputDiv.textContent += text.charAt(index);
-    index++;
-    } else {
-    clearInterval(interval);
-    document.getElementById('downloadPdfButton').disabled = false;
-    document.getElementById('copyButton').disabled = false;
-    const backButton = document.querySelector('#step4 .btn-group button:nth-child(1)');
-    backButton.disabled = false;
+  function animateText(text, startTime) {
+    const outputDiv = document.getElementById('coverLetterOutput');
+    outputDiv.textContent = '';
+    document.getElementById('downloadPdfButton').disabled = true;
+    document.getElementById('copyButton').disabled = true;
+
+    const charDelay = 45; 
+    const totalDuration = text.length * charDelay;
+
+    function step() {
+      const now = Date.now();
+      const elapsed = now - startTime;
+      const charsToShow = Math.min(text.length, Math.floor(elapsed / charDelay));
+      outputDiv.textContent = text.substring(0, charsToShow);
+      if (charsToShow < text.length) {
+        requestAnimationFrame(step);
+      } else {
+        document.getElementById('downloadPdfButton').disabled = false;
+        document.getElementById('copyButton').disabled = false;
+        const backButton = document.querySelector('#step4 .btn-group button:nth-child(1)');
+        backButton.disabled = false;
+        localStorage.removeItem("coverLetterStartTime");
+        localStorage.removeItem("coverLetterText");
+      }
     }
-}, 45);
-}
+    requestAnimationFrame(step);
+  }
 
-document.getElementById('downloadPdfButton').addEventListener('click', async function () {
-try {
-    const pdfWrapper = document.getElementById('pdfWrapper');
-    if (!pdfWrapper || !pdfWrapper.innerText.trim()) {
-    showToast("No cover letter generated!", 3000);
-    return;
+  window.addEventListener('load', function() {
+    const outputDiv = document.getElementById('coverLetterOutput');
+    const storedText = localStorage.getItem("coverLetterText");
+    const storedStartTime = localStorage.getItem("coverLetterStartTime");
+    if (outputDiv && storedText && storedStartTime) {
+      document.getElementById('step4').style.display = 'block';
+      animateText(storedText, parseInt(storedStartTime, 10));
     }
+  });
 
-    pdfWrapper.classList.add('pdf-version');
-    document.getElementById('coverLetterOutput').innerHTML = fullCoverLetterHTML;
-    pdfWrapper.scrollTop = 0;
-    await new Promise(resolve => setTimeout(resolve, 300));
-    const options = {
-    margin: 0,
-    filename: 'CoverLetter.pdf',
-    image: { type: 'jpeg', quality: 0.98 },
-    html2canvas: { scale: 0.8, scrollY: 0, backgroundColor: '#000000' },
-    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
-    pagebreak: { mode: ['css', 'legacy'] }
-    };
-    await html2pdf().set(options).from(pdfWrapper).save();
-    showToast("PDF generated successfully!", 3000);
-    pdfWrapper.classList.remove('pdf-version');
-} catch (error) {
-    console.error("Error generating PDF:", error);
-    showToast("Error generating PDF: " + error.message, 3000);
-}
-});
+  document.getElementById('downloadPdfButton').addEventListener('click', async function () {
+    try {
+      const pdfWrapper = document.getElementById('pdfWrapper');
+      if (!pdfWrapper || !pdfWrapper.innerText.trim()) {
+        showToast("No cover letter generated!", 3000);
+        return;
+      }
+      pdfWrapper.classList.add('pdf-version');
+      document.getElementById('coverLetterOutput').innerHTML = fullCoverLetterHTML;
+      pdfWrapper.scrollTop = 0;
+      await new Promise(resolve => setTimeout(resolve, 300));
+      const options = {
+        margin: 0,
+        filename: 'CoverLetter.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 0.8, scrollY: 0, backgroundColor: '#000000' },
+        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+        pagebreak: { mode: ['css', 'legacy'] }
+      };
+      await html2pdf().set(options).from(pdfWrapper).save();
+      showToast("PDF generated successfully!", 3000);
+      pdfWrapper.classList.remove('pdf-version');
+    } catch (error) {
+      console.error("Error generating PDF:", error);
+      showToast("Error generating PDF: " + error.message, 3000);
+    }
+  });
 
-document.getElementById('copyButton').addEventListener('click', function () {
-const coverLetterText = document.getElementById('coverLetterOutput').innerText;
-navigator.clipboard.writeText(coverLetterText).then(() => {
-    showToast("Cover letter copied to clipboard!", 3000);
-}).catch(err => {
-    console.error("Error copying to clipboard:", err);
-    showToast("Failed to copy: " + err.message, 3000);
-});
-});
+  document.getElementById('copyButton').addEventListener('click', function () {
+    const coverLetterText = document.getElementById('coverLetterOutput').innerText;
+    navigator.clipboard.writeText(coverLetterText).then(() => {
+      showToast("Cover letter copied to clipboard!", 3000);
+    }).catch(err => {
+      console.error("Error copying to clipboard:", err);
+      showToast("Failed to copy: " + err.message, 3000);
+    });
+  });
 
-updateProgress(1);
+  updateProgress(1);
 
-function showToast(message, duration = 3000) {
-var toast = document.getElementById("toast");
-toast.textContent = message;
-toast.className = "show";
-setTimeout(function(){
-    toast.className = toast.className.replace("show", "");
-}, duration);
-}
+  function showToast(message, duration = 3000) {
+    var toast = document.getElementById("toast");
+    toast.textContent = message;
+    toast.className = "show";
+    setTimeout(function(){
+      toast.className = toast.className.replace("show", "");
+    }, duration);
+  }
 </script>
 <footer>
-<a href="https://cover-craft.en.uptodown.com/android" class="image-button"><img src="/mediakit/Uptodown-button-getiton-black-small.png" alt="Uptodown"> </a>
-        <div class="footer-content">
-            <p>© Prime Bytesoft 2024. All rights reserved.</p>
-            <div class="footer-links">
-                <a href="privacypolicy.html">Privacy Policy</a>
-                <a href="termscondition.html">Terms & Conditions</a>
-            </div>
-        </div>
-    </footer>
+  <a href="https://cover-craft.en.uptodown.com/android" class="image-button">
+    <img src="/mediakit/Uptodown-button-getiton-black-small.png" alt="Uptodown">
+  </a>
+  <div class="footer-content">
+    <p>© Prime Bytesoft 2024. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="privacypolicy.html">Privacy Policy</a>
+      <a href="termscondition.html">Terms & Conditions</a>
+    </div>
+  </div>
+</footer>
 </body>
 </html>
