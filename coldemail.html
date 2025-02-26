@@ -205,13 +205,15 @@
       font-size: 1.2rem;
       color: #fff;
       white-space: pre-wrap;
+      overflow-wrap: break-word; /* allows long words to break */
+      word-break: break-all;     /* ensures even URLs break properly */
       box-shadow: 0 0 30px rgba(255,202,74,0.6);
       width: 100%;
       max-width: 190mm;
       height: auto;
-      overflow: hidden;
+      overflow: auto;  /* use auto if you prefer scrolling instead */
     }
-    
+
     footer {
       position: relative;
       bottom: 0;
@@ -325,6 +327,15 @@
     @keyframes fadeout {
       from { bottom: 30px; opacity: 1; }
       to { bottom: 0; opacity: 0; }
+    }
+    @media only screen and (max-width: 600px) {
+      #toast {
+        min-width: 200px;
+        font-size: 14px;
+        left: 10px;
+        bottom: 20px;
+        padding: 12px;
+      }
     }
   </style>
 </head>
@@ -477,7 +488,7 @@ ${phone}
 ${linkedin}
 ${email}
 `;
-    
+      document.getElementById('coldemailOutput').textContent = "";
       document.getElementById('step3').style.display = 'none';
       document.getElementById('step4').style.display = 'block';
       updateProgress(totalSteps);
